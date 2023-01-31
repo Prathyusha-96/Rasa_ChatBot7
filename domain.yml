@@ -1,0 +1,78 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - quote
+  - email
+  - password
+  - another_quote
+  - close
+
+entities:
+  - email
+  - password
+
+slots:
+  email:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: email
+
+  password:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: password
+
+responses:
+  utter_greet:
+  - text: "Hey! How may i assist you?"
+  
+  utter_ask_email:
+  - text: "Sure, Please help me with your email address"
+  
+  utter_ask_password:
+  - text: "Please enter your password"
+
+  utter_close:
+  - text: "bye, have a nice day!"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+forms:
+  details_form:
+    required_slots:
+      - email
+      - password
+      
+actions:
+  - validate_details_form
+  - action_quotes
+ 
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

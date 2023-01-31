@@ -1,0 +1,13 @@
+version: "3.1"
+
+rules:
+
+- rule: Say  quote anytime the user says next quote
+  steps:
+  - intent: another_quote
+  - action: action_quotes
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
